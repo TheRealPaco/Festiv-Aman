@@ -25,10 +25,9 @@
             android:name=".accueil"
             android:label="@string/title_activity_accueil"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".New_user"></activity>
+        <activity android:name=".New_user" />
+        <activity android:name=".modif_userCount" />
+        <activity android:name=".friends"></activity>
     </application>
 
 </manifest>

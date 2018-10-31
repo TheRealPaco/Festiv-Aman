@@ -31,4 +31,7 @@
     <string name="nouvel_utilisateur">Nouvel utilisateur</string>
     <string name="confirm_password">Confirmation du mot de passe</string>
     <string name="password_confirm">Confirmation mot de passe</string>
+    <string name="modif_count">Modifications compte utilisateur</string>
+    <string name="bitrthday_date">Date de naissance</string>
+    <string name="picture">Photo</string>
 </resources>

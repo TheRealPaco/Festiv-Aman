@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void UserAccount(View view) {
-        Intent intent = new Intent( this, LoginActivity.class);
+        Intent intent = new Intent( this, AccountInfoActivity.class);
         startActivity(intent);
     }
 }

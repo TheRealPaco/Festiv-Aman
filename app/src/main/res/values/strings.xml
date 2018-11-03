@@ -11,4 +11,9 @@
     <string name="user_account">Compte utilisateur</string>
     <string name="friend_page">Page d\'amis</string>
     <string name="map">Map</string>
+
+    <string name="account_modification">Modifications compte utilisateur</string>
+    <string name="birthdate">Date de naissance</string>
+    <string name="picture">Photo</string>
+
 </resources>

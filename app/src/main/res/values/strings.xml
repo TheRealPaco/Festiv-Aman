@@ -16,4 +16,9 @@
     <string name="birthdate">Date de naissance</string>
     <string name="picture">Photo</string>
 
+    <string name="nav_accueil">Accueil</string>
+    <string name="nav_compte_utilisateur">Compte utilisateur</string>
+    <string name="nav_amis">Amis</string>
+    <string name="nav_carte">Carte</string>
+
 </resources>

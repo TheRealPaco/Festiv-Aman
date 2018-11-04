@@ -27,20 +27,20 @@ public class HomeActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
                         return true;
                     }
                 });
     }
 
-    public void onClickImage(View view) {
+    @Override
+    public void onBackPressed() {
+
+        mDrawerLayout.closeDrawers();
+        super.onBackPressed();
+    }
+
+    public void ImagePage(View view) {
         Intent intent = new Intent( this, LoginActivity.class);
         startActivity(intent);
     }
@@ -51,6 +51,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void UserAccount(View view) {
+        Intent intent = new Intent( this, AccountInfoActivity.class);
+        startActivity(intent);
+    }
+
+
+    protected void startAccountInfoActivity() {
         Intent intent = new Intent( this, AccountInfoActivity.class);
         startActivity(intent);
     }

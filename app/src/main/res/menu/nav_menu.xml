@@ -17,5 +17,9 @@
         android:id="@+id/nav_compte_utilisateur"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="@string/nav_compte_utilisateur" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout_black_24dp"
+        android:title="@string/nav_logout" />
 
 </menu>

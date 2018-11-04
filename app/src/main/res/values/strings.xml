@@ -20,5 +20,6 @@
     <string name="nav_compte_utilisateur">Compte utilisateur</string>
     <string name="nav_amis">Amis</string>
     <string name="nav_carte">Carte</string>
+    <string name="nav_logout">Déconnexion</string>
 
 </resources>

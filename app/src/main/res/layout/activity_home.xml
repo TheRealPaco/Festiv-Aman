@@ -27,10 +27,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin" />
 
             <TextView
-                android:id="@+id/textViewTitle"
+                android:id="@+id/textViewTitleLogin"
                 android:layout_width="0dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="28dp"
@@ -69,7 +69,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/buttonAccount2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin" />
 
             <Button
                 android:id="@+id/buttonAccount2"
@@ -82,7 +82,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/buttonUserAccount"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin" />
 
             <TextView
                 android:id="@+id/textViewMap"

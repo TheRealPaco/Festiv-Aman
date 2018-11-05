@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="361dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:orientation="vertical"
@@ -36,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textViewTitle"
+                    android:id="@+id/textViewTitleLogin"
                     android:layout_width="199dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="16dp"
@@ -46,7 +47,7 @@
                     android:linksClickable="false"
                     android:text="@string/nouvel_utilisateur"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextUser"
+                    app:layout_constraintBottom_toTopOf="@+id/editTextNewUser"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.357"
                     app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +55,23 @@
                     app:layout_constraintVertical_bias="0.1" />
 
                 <EditText
-                    android:id="@+id/editTextUser"
+                    android:id="@+id/editTextNewUser"
                     android:layout_width="251dp"
                     android:layout_height="45dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:ems="10"
                     android:hint="@string/username"
                     android:inputType="textPersonName"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+                    app:layout_constraintBottom_toTopOf="@+id/editTextPasswordLogin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextPassword"
+                    android:id="@+id/editTextPasswordNewUser"
                     android:layout_width="251dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="16dp"
@@ -79,7 +80,7 @@
                     android:ems="10"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextUser"
+                    app:layout_constraintBottom_toTopOf="@+id/editTextNewUser"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.505"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -94,13 +95,13 @@
                     android:ems="10"
                     android:hint="@string/password_confirm"
                     android:inputType="textPassword"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+                    app:layout_constraintBottom_toTopOf="@+id/editTextEmailNewUser"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextEmail"
+                    android:id="@+id/editTextEmailNewUser"
                     android:layout_width="251dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="16dp"
@@ -114,9 +115,10 @@
                     android:id="@+id/buttonCreateUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
+                    android:layout_gravity="right"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:onClick="newUser"
                     android:text="@string/sign_up" />
 
 

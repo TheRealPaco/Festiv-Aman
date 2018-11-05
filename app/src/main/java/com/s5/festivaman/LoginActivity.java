@@ -1,16 +1,13 @@
 package com.s5.festivaman;
 
 import android.app.AlertDialog;
-import android.arch.lifecycle.ViewModelStoreOwner;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -75,13 +72,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean checkUserPassword() {
         //TODO Hash password and check in DB if good, remove dummy check
-        return !isEditTextEmpty(findViewById(R.id.editTextUserName)) &&
-                !isEditTextEmpty(findViewById(R.id.editTextPassword));
+        return !isEditTextEmpty(findViewById(R.id.editTextUserNameLogin)) &&
+                !isEditTextEmpty(findViewById(R.id.editTextPasswordLogin));
     }
 
     private boolean isEditTextEmpty(View view) {
         return ((EditText)view).getText().toString().isEmpty();
     }
-
-
 }

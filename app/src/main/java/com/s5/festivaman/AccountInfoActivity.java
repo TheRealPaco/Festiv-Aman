@@ -1,6 +1,7 @@
 package com.s5.festivaman;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,18 +29,37 @@ public class AccountInfoActivity extends AppCompatActivity {
                         mDrawerLayout.closeDrawers();
                         switch (menuItem.getItemId()) {
                             case R.id.nav_accueil: {
+                                startIntent(HomeActivity.class, false);
                                 break;
                             }
                             case R.id.nav_amis: {
+                                startIntent(FriendsActivity.class, false);
+                                break;
+                            }
+                            case R.id.nav_groups: {
+                                startIntent(GroupsActivity.class, false);
+                                break;
+                            }
+                            case R.id.nav_events: {
+                                startIntent(EventsActivity.class, false);
+                                break;
+                            }
+                            case R.id.nav_meetings: {
+                                startIntent(MeetingsActivity.class, false);
                                 break;
                             }
                             case R.id.nav_carte: {
+                                startIntent(MapActivity.class, false);
                                 break;
                             }
                             case R.id.nav_compte_utilisateur: {
+                                startIntent(AccountInfoActivity.class, false);
                                 break;
                             }
                             case R.id.nav_logout: {
+                                //TODO logout user
+                                startIntent(LoginActivity.class, true);
+                                finish();
                                 break;
                             }
                             default:{};
@@ -48,6 +68,14 @@ public class AccountInfoActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+    }
+
+    private void startIntent(Class<?> tClass, boolean clearTop) {
+        Intent intent = new Intent( this, tClass);
+        if (clearTop) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        startActivity(intent);
     }
 
     /*

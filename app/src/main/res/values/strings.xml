@@ -17,9 +17,12 @@
     <string name="picture">Photo</string>
 
     <string name="nav_accueil">Accueil</string>
-    <string name="nav_compte_utilisateur">Compte utilisateur</string>
     <string name="nav_amis">Amis</string>
+    <string name="nav_groups">Groupes</string>
+    <string name="nav_events">Évènements</string>
+    <string name="nav_meetings">Points de rencontre</string>
     <string name="nav_carte">Carte</string>
+    <string name="nav_compte_utilisateur">Compte utilisateur</string>
     <string name="nav_logout">Déconnexion</string>
 
 </resources>

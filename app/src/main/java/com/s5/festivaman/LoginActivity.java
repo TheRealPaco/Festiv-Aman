@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // Change color and hide progressBar
         progressBar = findViewById(R.id.progressBar);
-        progressBar.getIndeterminateDrawable().setColorFilter((int)R.color.colorPrimary,
-                android.graphics.PorterDuff.Mode.MULTIPLY);
+ //       progressBar.getIndeterminateDrawable().setColorFilter((int)R.color.colorPrimary,
+  //              android.graphics.PorterDuff.Mode.MULTIPLY);
         progressBar.setVisibility(View.GONE);
     }
 
@@ -71,9 +71,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkUserPassword() {
+        return true;
         //TODO Hash password and check in DB if good, remove dummy check
-        return !isEditTextEmpty(findViewById(R.id.editTextUserNameLogin)) &&
-                !isEditTextEmpty(findViewById(R.id.editTextPasswordLogin));
+        //return !isEditTextEmpty(findViewById(R.id.editTextUserNameLogin)) &&
+        //        !isEditTextEmpty(findViewById(R.id.editTextPasswordLogin));
     }
 
     private boolean isEditTextEmpty(View view) {

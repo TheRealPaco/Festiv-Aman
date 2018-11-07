@@ -6,6 +6,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewEvent"
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/nav_events"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.050000012" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="80dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/comming_event"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/comming_event"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEvent" />
+
+            <TextView
+                android:id="@+id/comming_event2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/event_to_do"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/comming_event" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

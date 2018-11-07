@@ -93,11 +93,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void ImagePage(View view) {
-        Intent intent = new Intent( this, LoginActivity.class);
-        startActivity(intent);
-    }
-
     public void friendPage(View view) {
         Intent intent = new Intent( this, LoginActivity.class);
         startActivity(intent);

@@ -24,5 +24,7 @@
     <string name="nav_carte">Carte</string>
     <string name="nav_compte_utilisateur">Compte utilisateur</string>
     <string name="nav_logout">Déconnexion</string>
+    <string name="comming_event">Évènements à venir</string>
+    <string name="event_to_do">Évènements suggérés</string>
 
 </resources>

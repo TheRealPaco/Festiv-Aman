@@ -19,6 +19,6 @@ public class AppLoadingActivity extends AppCompatActivity {
         this.finish();
     }
 
-    //TODO CHeck DB status
+    //TODO Check DB status
 
 }

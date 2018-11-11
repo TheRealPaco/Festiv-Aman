@@ -12,99 +12,32 @@ import android.text.style.BulletSpan;
 import android.view.MenuItem;
 import android.view.View;
 
-public class HomeActivity extends AppCompatActivity {
+import com.s5.festivaman.activities.DrawerActivity;
 
-    private DrawerLayout mDrawerLayout;
+public class HomeActivity extends DrawerActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void startActivity() {
         setContentView(R.layout.activity_home);
-
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        mDrawerLayout.closeDrawers();
-                        switch (menuItem.getItemId()) {
-                            case R.id.nav_accueil: {
-                                startIntent(HomeActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_amis: {
-                                startIntent(FriendsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_groups: {
-                                startIntent(GroupsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_events: {
-                                startIntent(EventsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_meetings: {
-                                startIntent(MeetingsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_carte: {
-                                startIntent(MapActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_compte_utilisateur: {
-                                startIntent(AccountInfoActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_logout: {
-                                //TODO logout user
-                                startIntent(LoginActivity.class, true);
-                                finish();
-                                break;
-                            }
-                            default:{};
-                        }
-                        return true;
-                    }
-                });
+        navigationView = findViewById(R.id.nav_view);
     }
 
-
-    private void startIntent(Class<?> tClass, boolean clearTop) {
-        Intent intent = new Intent( this, tClass);
-        if (clearTop) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }
-        startActivity(intent);
-    }
-
-    /*
-     * If drawer is open close it instead of going back when back button is pressed
-     */
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawers();
-        }
-        else {
-            super.onBackPressed();
+        } else {
+            finish();
         }
     }
 
     public void friendPage(View view) {
-        Intent intent = new Intent( this, LoginActivity.class);
+        Intent intent = new Intent( this, FriendsActivity.class);
         startActivity(intent);
     }
 
     public void UserAccount(View view) {
-        Intent intent = new Intent( this, AccountInfoActivity.class);
-        startActivity(intent);
-    }
-
-
-    protected void startAccountInfoActivity() {
         Intent intent = new Intent( this, AccountInfoActivity.class);
         startActivity(intent);
     }

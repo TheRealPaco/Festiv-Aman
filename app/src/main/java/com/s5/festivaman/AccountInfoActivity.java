@@ -9,85 +9,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class AccountInfoActivity extends AppCompatActivity {
-    //TODO Check activity instantiate multiple times
-    private DrawerLayout mDrawerLayout;
+import com.s5.festivaman.activities.DrawerActivity;
+
+public class AccountInfoActivity extends DrawerActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void startActivity() {
         setContentView(R.layout.activity_account_info);
-
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                        @Override
-                        public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                        mDrawerLayout.closeDrawers();
-                        switch (menuItem.getItemId()) {
-                            case R.id.nav_accueil: {
-                                startIntent(HomeActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_amis: {
-                                startIntent(FriendsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_groups: {
-                                startIntent(GroupsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_events: {
-                                startIntent(EventsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_meetings: {
-                                startIntent(MeetingsActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_carte: {
-                                startIntent(MapActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_compte_utilisateur: {
-                                startIntent(AccountInfoActivity.class, false);
-                                break;
-                            }
-                            case R.id.nav_logout: {
-                                //TODO logout user
-                                startIntent(LoginActivity.class, true);
-                                finish();
-                                break;
-                            }
-                            default:{};
-                        }
-
-                        return true;
-                    }
-                });
-    }
-
-    private void startIntent(Class<?> tClass, boolean clearTop) {
-        Intent intent = new Intent( this, tClass);
-        if (clearTop) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }
-        startActivity(intent);
-    }
-
-    /*
-     * If drawer is open close it instead of going back when back button is pressed
-     */
-    @Override
-    public void onBackPressed() {
-       if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-           mDrawerLayout.closeDrawers();
-       }
-       else {
-           super.onBackPressed();
-       }
+        navigationView = findViewById(R.id.nav_view);
     }
 }

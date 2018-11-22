@@ -25,7 +25,8 @@
         <activity android:name=".GroupsActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".EventsActivity" />
-        <activity android:name=".MeetingsActivity"></activity>
+        <activity android:name=".MeetingsActivity" />
+        <activity android:name=".add_friend"></activity>
     </application>
 
 </manifest>

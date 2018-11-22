@@ -27,5 +27,6 @@
     <string name="comming_event">Évènements à venir</string>
     <string name="event_to_do">Évènements suggérés</string>
     <string name="add_friend">Ajouter un ami</string>
+    <string name="search">Rechercher</string>
 
 </resources>

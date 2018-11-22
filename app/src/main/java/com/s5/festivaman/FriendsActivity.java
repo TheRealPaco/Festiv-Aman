@@ -111,4 +111,9 @@ public class FriendsActivity extends DrawerActivity {
         }
 
     }
+    public void changePage (View view){
+        Intent intent = new Intent(this, add_friend.class);
+        startActivity(intent);
+
+    }
 }

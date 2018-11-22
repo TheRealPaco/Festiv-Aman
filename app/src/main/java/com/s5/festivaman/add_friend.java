@@ -1,5 +1,7 @@
 package com.s5.festivaman;
 
+        import android.content.DialogInterface;
+        import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.view.Gravity;
@@ -21,6 +23,7 @@ public class add_friend extends DrawerActivity {
 
     private Map<Integer,TextView> map;
     private List<String> list;
+    private AlertDialog.Builder friendAddedDialog;
 
     @Override
     protected void startActivity() {
@@ -34,6 +37,14 @@ public class add_friend extends DrawerActivity {
 
         super.onCreate(savedInstanceState);
         map=new HashMap<Integer,TextView>();
+
+        friendAddedDialog = new AlertDialog.Builder(this)
+                .setTitle("Ami(e) ajouté(e)")
+                .setMessage("Ami ajouté")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
     }
 
     public void getText(View view) {
@@ -78,6 +89,7 @@ public class add_friend extends DrawerActivity {
             textView.setTextSize(24);
             textView.setGravity(Gravity.CENTER);
             textView.setHeight(97);
+            textView.setWidth(570);
 
             linearLayout.addView(textView);
 
@@ -93,7 +105,11 @@ public class add_friend extends DrawerActivity {
             button.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
-                    add_friend();
+                    if(add_friend()){
+                        buttonAddFriend(v);
+
+                    }
+
 
                 }
             });
@@ -114,7 +130,8 @@ public class add_friend extends DrawerActivity {
 
         TextView textView = (map.get(view.getId()));
         if (add_friend()) {
-            //TODO pop-up qui dit "votre ami est ajouté"
+            friendAddedDialog.setMessage("Votre ami(e) "+ textView.getText() + " a bien été ajouté(e) à votre liste")
+                    .show();
         }
     }
 }

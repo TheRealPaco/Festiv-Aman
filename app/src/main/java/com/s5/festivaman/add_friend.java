@@ -68,7 +68,7 @@ public class add_friend extends DrawerActivity {
         {
 
             friendsName.add("Maëlle Fromont");
-            friendsName.add("Jean-Phillipe Baillargeons");
+            friendsName.add("Jean-Phillippe Baillargeon");
             friendsName.add("Marc-Antoine Caron");
         }
         return friendsName;

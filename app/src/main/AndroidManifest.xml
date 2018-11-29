@@ -26,7 +26,11 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".EventsActivity" />
         <activity android:name=".MeetingsActivity" />
-        <activity android:name=".add_friend"></activity>
+        <activity android:name=".add_friend" />
+        <activity android:name=".modifaccount.user_name" />
+        <activity android:name=".modifaccount.password" />
+        <activity android:name=".modifaccount.email" />
+        <activity android:name=".modifaccount.date"></activity>
     </application>
 
 </manifest>

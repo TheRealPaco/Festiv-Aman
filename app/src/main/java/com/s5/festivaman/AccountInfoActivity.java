@@ -2,14 +2,13 @@ package com.s5.festivaman;
 
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.view.View;
 
 import com.s5.festivaman.activities.DrawerActivity;
+import com.s5.festivaman.modifaccount.date;
+import com.s5.festivaman.modifaccount.email;
+import com.s5.festivaman.modifaccount.password;
+import com.s5.festivaman.modifaccount.user_name;
 
 public class AccountInfoActivity extends DrawerActivity {
 
@@ -18,5 +17,34 @@ public class AccountInfoActivity extends DrawerActivity {
         setContentView(R.layout.activity_account_info);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
     }
+
+
+
+    public void onClic_userName(View view) {
+
+        Intent intent = new Intent(this, user_name.class);
+        startActivity(intent);
+
+    }
+
+    public void onClic_password(View view)
+    {
+        Intent intent = new Intent(this, password.class);
+        startActivity(intent);
+    }
+
+    public void onClic_email(View view)
+    {
+        Intent intent = new Intent(this, email.class);
+        startActivity(intent);
+    }
+
+    public void onClic_date(View view)
+    {
+        Intent intent = new Intent(this, date.class);
+        startActivity(intent);
+    }
+
 }

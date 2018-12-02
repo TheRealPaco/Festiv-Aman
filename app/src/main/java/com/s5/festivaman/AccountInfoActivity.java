@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.s5.festivaman.activities.DrawerActivity;
-import com.s5.festivaman.modifaccount.date;
+import com.s5.festivaman.modifaccount.bracelet;
 import com.s5.festivaman.modifaccount.email;
 import com.s5.festivaman.modifaccount.password;
 import com.s5.festivaman.modifaccount.user_name;
@@ -43,8 +43,13 @@ public class AccountInfoActivity extends DrawerActivity {
 
     public void onClic_date(View view)
     {
-        Intent intent = new Intent(this, date.class);
+        Intent intent = new Intent(this, BirthDate.class);
         startActivity(intent);
     }
 
+    public void onClic_bracelet(View view)
+    {
+        Intent intent = new Intent(this, bracelet.class);
+        startActivity(intent);
+    }
 }

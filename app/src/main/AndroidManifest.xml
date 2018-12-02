@@ -30,7 +30,8 @@
         <activity android:name=".modifaccount.user_name" />
         <activity android:name=".modifaccount.password" />
         <activity android:name=".modifaccount.email" />
-        <activity android:name=".modifaccount.date"></activity>
+        <activity android:name=".BirthDate" />
+        <activity android:name=".modifaccount.bracelet"></activity>
     </application>
 
 </manifest>

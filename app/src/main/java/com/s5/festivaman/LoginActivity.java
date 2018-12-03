@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.s5.festivaman.modifaccount.bracelet;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
@@ -53,14 +55,14 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 // PopUp to display the error
                 loginErrorDialog.setMessage("Wrong username and password")
-                                .show();
+                        .show();
 
                 // Hide progress bar, not needed if check was successful since activity would have been killed
                 findViewById(R.id.progressBar).setVisibility(View.GONE);
             }
         } catch (Exception e) {
             loginErrorDialog.setMessage("Error accessing the database")
-                            .show();
+                    .show();
         }
     }
 
@@ -80,4 +82,11 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isEditTextEmpty(View view) {
         return ((EditText)view).getText().toString().isEmpty();
     }
+
+    public void forgottenPassword(View view)
+    {
+        Intent intent = new Intent(this, ForgottenPasseword.class);
+        startActivity(intent);
+    }
+
 }

@@ -88,15 +88,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"><![CDATA[
+                android:layout_height="match_parent">
 
-
-
-                >
-
-
-
-            ]]>
 
                 <LinearLayout
                     android:id="@+id/layout_add_friend"
@@ -122,4 +115,4 @@
 
     </android.support.design.widget.NavigationView>
 
-    </android.support.v4.widget.DrawerLayout>
+</android.support.v4.widget.DrawerLayout>

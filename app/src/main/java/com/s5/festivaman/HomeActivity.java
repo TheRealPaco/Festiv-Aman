@@ -33,17 +33,37 @@ public class HomeActivity extends DrawerActivity {
     }
 
     public void friendPage(View view) {
-        Intent intent = new Intent( this, FriendsActivity.class);
+        Intent intent = new Intent(this, FriendsActivity.class);
         startActivity(intent);
     }
 
     public void UserAccount(View view) {
-        Intent intent = new Intent( this, AccountInfoActivity.class);
+        Intent intent = new Intent(this, AccountInfoActivity.class);
         startActivity(intent);
     }
 
     public void map(View view) {
-        Intent intent = new Intent( this, MapsActivity.class);
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
+
+    public void event(View view) {
+        Intent intent = new Intent(this, EventsActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void groupe (View view) {
+        Intent intent = new Intent(this, GroupsActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void meeting (View view) {
+        Intent intent = new Intent(this, MeetingsActivity.class);
+        startActivity(intent);
+
+    }
+
 }
+

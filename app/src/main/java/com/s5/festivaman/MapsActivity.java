@@ -1,39 +1,37 @@
-package com.s5.festivaman.activities;
+package com.s5.festivaman;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+        import android.content.Intent;
+        import android.support.design.widget.NavigationView;
+        import android.support.v4.app.FragmentActivity;
+        import android.os.Bundle;
+        import android.support.v4.view.GravityCompat;
+        import android.support.v4.widget.DrawerLayout;
+        import android.view.MenuItem;
 
-import com.s5.festivaman.AccountInfoActivity;
-import com.s5.festivaman.EventsActivity;
-import com.s5.festivaman.FriendsActivity;
-import com.s5.festivaman.GroupsActivity;
-import com.s5.festivaman.HomeActivity;
-import com.s5.festivaman.LoginActivity;
-import com.s5.festivaman.MapsActivity;
-import com.s5.festivaman.MeetingsActivity;
-import com.s5.festivaman.R;
-import com.s5.festivaman.user.User;
+        import com.google.android.gms.maps.CameraUpdateFactory;
+        import com.google.android.gms.maps.GoogleMap;
+        import com.google.android.gms.maps.OnMapReadyCallback;
+        import com.google.android.gms.maps.SupportMapFragment;
+        import com.google.android.gms.maps.model.LatLng;
+        import com.google.android.gms.maps.model.MarkerOptions;
 
-public class DrawerActivity extends AppCompatActivity {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    private GoogleMap mMap;
 
     protected DrawerLayout mDrawerLayout;
     protected NavigationView navigationView;
 
-    protected void startActivity() {
-        setContentView(R.layout.activity_app_loading);
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.startActivity();
+        setContentView(R.layout.activity_maps);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -71,7 +69,7 @@ public class DrawerActivity extends AppCompatActivity {
                                 break;
                             }
                             case R.id.nav_logout: {
-                                User.logOut();
+                                //TODO logout user
                                 startIntent(LoginActivity.class, true);
                                 finish();
                                 break;
@@ -93,9 +91,26 @@ public class DrawerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-     * If drawer is open close it instead of going back when back button is pressed
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
      */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sherbrooke and move the camera
+        LatLng sherbrooke = new LatLng(45.3781, -71.9261);
+        mMap.addMarker(new MarkerOptions().position(sherbrooke).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sherbrooke));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sherbrooke, 16 ));
+
+    }
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -106,3 +121,6 @@ public class DrawerActivity extends AppCompatActivity {
         }
     }
 }
+
+
+

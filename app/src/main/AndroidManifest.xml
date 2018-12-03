@@ -5,6 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_1000x1000"
@@ -26,7 +33,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".FriendsActivity" />
         <activity android:name=".GroupsActivity" />
-        <activity android:name=".MapActivity" />
         <activity android:name=".EventsActivity" />
         <activity android:name=".MeetingsActivity" />
         <activity android:name=".add_friend" />

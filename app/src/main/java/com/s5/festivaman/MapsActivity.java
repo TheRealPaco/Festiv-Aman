@@ -1,7 +1,12 @@
 package com.s5.festivaman;
 
+        import android.content.Intent;
+        import android.support.design.widget.NavigationView;
         import android.support.v4.app.FragmentActivity;
         import android.os.Bundle;
+        import android.support.v4.view.GravityCompat;
+        import android.support.v4.widget.DrawerLayout;
+        import android.view.MenuItem;
 
         import com.google.android.gms.maps.CameraUpdateFactory;
         import com.google.android.gms.maps.GoogleMap;
@@ -13,6 +18,9 @@ package com.s5.festivaman;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
+    protected DrawerLayout mDrawerLayout;
+    protected NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +30,66 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        mDrawerLayout.closeDrawers();
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_accueil: {
+
+                                startIntent(HomeActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_amis: {
+                                startIntent(FriendsActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_groups: {
+                                startIntent(GroupsActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_events: {
+                                startIntent(EventsActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_meetings: {
+                                startIntent(MeetingsActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_carte: {
+                                startIntent(MapsActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_compte_utilisateur: {
+                                startIntent(AccountInfoActivity.class, true);
+                                break;
+                            }
+                            case R.id.nav_logout: {
+                                //TODO logout user
+                                startIntent(LoginActivity.class, true);
+                                finish();
+                                break;
+                            }
+                            default: {
+                            }
+                            ;
+                        }
+                        return true;
+                    }
+                });
     }
 
+    private void startIntent(Class<?> tClass, boolean clearTop) {
+        Intent intent = new Intent(this, tClass);
+        if (clearTop) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        startActivity(intent);
+    }
 
     /**
      * Manipulates the map once available.
@@ -45,9 +111,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sherbrooke, 16 ));
 
     }
-
-
-
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawers();
+        } else {
+            startIntent(HomeActivity.class, true );
+            //super.onBackPressed();
+        }
+    }
 }
 
 

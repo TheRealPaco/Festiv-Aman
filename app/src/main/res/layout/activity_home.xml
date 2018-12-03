@@ -45,45 +45,82 @@ android:layout_height="match_parent">
             app:layout_constraintVertical_chainStyle="spread" />
 
         <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="107dp"
+            android:layout_height="169dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/welcommingText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin"
+            app:srcCompat="@drawable/logo_blank_background_380x380" />
+
+        <TextView
+            android:id="@+id/welcommingText"
+            android:layout_width="214dp"
+            android:layout_height="134dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:text="Festiv'aman est une application liée à votre bracelet et vous permet d'ajouter des amis, créer des groupes et même créer des points de rencontre! Avec votre bracelet, vous ne perdrez plus jamais vos amis dans un évènement."
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider2" />
+
+        <View
+            android:id="@+id/divider14"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="250dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/imageViewMap"
-            android:layout_width="538dp"
-            android:layout_height="237dp"
+            android:layout_width="500dp"
+            android:layout_height="282dp"
 
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/planviellescharues"
+            android:layout_marginBottom="19dp"
+            android:src="@drawable/plan_udes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMap"
-            app:layout_constraintVertical_bias="1.0"
-            tools:onClick="ImagePage" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:onClick="ImagePage"
+            android:onClick="map"
+            />
 
         <Button
             android:id="@+id/buttonUserAccount"
             android:layout_width="130dp"
             android:layout_height="70dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="276dp"
+            android:layout_marginTop="208dp"
             android:onClick="UserAccount"
             android:text="@string/user_account"
             app:layout_constraintEnd_toStartOf="@+id/buttonAccount2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin"
+            />
 
         <Button
             android:id="@+id/buttonAccount2"
             android:layout_width="130dp"
             android:layout_height="70dp"
-            android:layout_marginTop="276dp"
+            android:layout_marginTop="208dp"
             android:layout_marginEnd="20dp"
             android:onClick="friendPage"
             android:text="@string/friend_page"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonUserAccount"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleLogin"
+            />
 
         <TextView
             android:id="@+id/textViewMap"
@@ -97,16 +134,17 @@ android:layout_height="match_parent">
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:onClick="map"/>
 
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="132dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonAccount2" />
 

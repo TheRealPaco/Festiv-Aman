@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorButton">#f1344d</color>
 
     <color name="white_opaque">#FFFFFFFF</color>
     <color name="pitch_black">#000000</color>

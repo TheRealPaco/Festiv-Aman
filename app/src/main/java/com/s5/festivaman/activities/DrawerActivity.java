@@ -14,7 +14,7 @@ import com.s5.festivaman.FriendsActivity;
 import com.s5.festivaman.GroupsActivity;
 import com.s5.festivaman.HomeActivity;
 import com.s5.festivaman.LoginActivity;
-import com.s5.festivaman.MapActivity;
+import com.s5.festivaman.MapsActivity;
 import com.s5.festivaman.MeetingsActivity;
 import com.s5.festivaman.R;
 
@@ -62,7 +62,7 @@ public class DrawerActivity extends AppCompatActivity {
                                 break;
                             }
                             case R.id.nav_carte: {
-                                startIntent(MapActivity.class, true);
+                                startIntent(MapsActivity.class, true);
                                 break;
                             }
                             case R.id.nav_compte_utilisateur: {

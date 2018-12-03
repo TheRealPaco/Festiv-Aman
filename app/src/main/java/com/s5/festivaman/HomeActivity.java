@@ -41,4 +41,9 @@ public class HomeActivity extends DrawerActivity {
         Intent intent = new Intent( this, AccountInfoActivity.class);
         startActivity(intent);
     }
+
+    public void map(View view) {
+        Intent intent = new Intent( this, MapsActivity.class);
+        startActivity(intent);
+    }
 }

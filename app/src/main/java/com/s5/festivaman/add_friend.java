@@ -1,23 +1,25 @@
 package com.s5.festivaman;
 
-        import android.content.DialogInterface;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.Gravity;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.LinearLayout;
-        import android.widget.Space;
-        import android.widget.TextView;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Space;
+import android.widget.TextView;
 
-        import com.s5.festivaman.activities.DrawerActivity;
+import com.s5.festivaman.Socket.DatabaseQueries;
+import com.s5.festivaman.activities.DrawerActivity;
+import com.s5.festivaman.user.User;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class add_friend extends DrawerActivity {
 
@@ -59,18 +61,10 @@ public class add_friend extends DrawerActivity {
 
     protected List<String> getUserList(String name) {
 
-        //TODO search in the database the firend's name
-        int n=10;
-        //TODO chercher dans la database le nombre d'amis (n)
         List<String> friendsName=new ArrayList<>();
+        friendsName.add(name);
 
-        for(int i=0; i<n; i++)
-        {
 
-            friendsName.add("Maëlle Fromont");
-            friendsName.add("Jean-Phillippe Baillargeon");
-            friendsName.add("Marc-Antoine Caron");
-        }
         return friendsName;
     }
 
@@ -105,12 +99,7 @@ public class add_friend extends DrawerActivity {
             button.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
-                    if(add_friend()){
-                        buttonAddFriend(v);
-
-                    }
-
-
+                    buttonAddFriend(v);
                 }
             });
 
@@ -119,17 +108,14 @@ public class add_friend extends DrawerActivity {
     }
 
 
-    protected boolean add_friend(){
-        //TODO ajouter l'ami dans la database
-        return true;
-
-
+    protected boolean add_friend(String friend){
+        return new DatabaseQueries().addFriends(User.getUserName(),friend);
     }
 
     public void buttonAddFriend (View view) {
 
         TextView textView = (map.get(view.getId()));
-        if (add_friend()) {
+        if (add_friend(textView.getText().toString())) {
             friendAddedDialog.setMessage("Votre ami(e) "+ textView.getText() + " a bien été ajouté(e) à votre liste")
                     .show();
         }

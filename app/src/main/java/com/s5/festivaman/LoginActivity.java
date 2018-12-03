@@ -9,11 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.s5.festivaman.Socket.DatabaseQueries;
+import com.s5.festivaman.user.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private AlertDialog.Builder loginErrorDialog;
 
+    private String user;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +47,20 @@ public class LoginActivity extends AppCompatActivity {
         //set progress circle visible till connection is successful or fails
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
+        user = ((EditText)findViewById(R.id.editTextUserNameLogin)).getText().toString();
+        password = ((EditText)findViewById(R.id.editTextPasswordLogin)).getText().toString();
+
         try {
+            if (user.isEmpty() || password.isEmpty()) {
+                loginErrorDialog.setMessage("Enter an username and a password")
+                        .show();
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
+                return;
+            }
+
             if (checkUserPassword()) {
                 // Start Activity
+                User.logIn(user);
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
 
@@ -71,13 +87,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkUserPassword() {
-        return true;
-        //TODO Hash password and check in DB if good, remove dummy check
-        //return !isEditTextEmpty(findViewById(R.id.editTextUserNameLogin)) &&
-        //        !isEditTextEmpty(findViewById(R.id.editTextPasswordLogin));
-    }
-
-    private boolean isEditTextEmpty(View view) {
-        return ((EditText)view).getText().toString().isEmpty();
+        return new DatabaseQueries().isPasswordCorrect(user,password);
     }
 }

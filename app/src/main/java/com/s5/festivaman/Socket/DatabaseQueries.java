@@ -131,11 +131,11 @@ public class DatabaseQueries {
 
     public List<String> getFriendPosition(String user) {
         if (isDatabaseMocked) {
-            List<String> returnList = new ArrayList<String>();
-            returnList.add("Paco;45.3781;-71.9261");
-            returnList.add("Louise;45.3781;-71.9271");
-            returnList.add("Chapeau;45.3781;-71.9281");
-            return returnList;
+            List<String> tempList = new ArrayList<String>();
+            tempList.add("Paco;46.814984;-71.208142");
+            tempList.add("Louise;48.389845;-4.484317");
+            tempList.add("Chapeau;45.3781;-71.9281");
+            return tempList;
         }
         query.add("friendPos");
         query.add(user);

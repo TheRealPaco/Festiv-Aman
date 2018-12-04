@@ -64,7 +64,7 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/ic_arrow_back_black_24dp"
                 android:onClick="pastMarker"
-                app:layout_constraintEnd_toStartOf="@+id/currentPositionTextView"
+                app:layout_constraintEnd_toStartOf="@+id/eventTextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,11 +76,11 @@
                 android:background="@drawable/ic_arrow_forward_black_24dp"
                 android:onClick="nextMarker"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/currentPositionTextView"
+                app:layout_constraintStart_toEndOf="@+id/eventTextView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/currentPositionTextView"
+                android:id="@+id/currentTextView"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

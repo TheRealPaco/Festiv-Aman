@@ -6,71 +6,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textViewEvent"
-                android:layout_width="344dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:layout_width="154dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="203dp"
                 android:text="@string/nav_events"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.050000012" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/divider4"
+                android:id="@+id/divider3"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="80dp"
-                android:background="?android:attr/listDivider"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MapsActivity" />
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/ic_arrow_back_black_24dp"
+                android:onClick="pastMarker"
+                app:layout_constraintEnd_toStartOf="@+id/eventTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ic_arrow_forward_black_24dp"
+                android:onClick="nextMarker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/eventTextView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/comming_event"
-                android:layout_width="match_parent"
+                android:id="@+id/eventTextView"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="80dp"
-                android:text="@string/comming_event"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewEvent" />
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/button9"
+                app:layout_constraintStart_toEndOf="@+id/button10"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/comming_event2"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="50dp"
-                android:text="@string/event_to_do"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/comming_event" />
         </android.support.constraint.ConstraintLayout>
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+
         app:menu="@menu/nav_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         android:id="@+id/nav_view">
+
     </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

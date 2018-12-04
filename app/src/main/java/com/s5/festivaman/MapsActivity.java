@@ -8,7 +8,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,10 +20,7 @@ import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.user.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -141,7 +137,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, zoom ));
         currentMarker = markerList.size()-1;
-        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+        ((TextView)findViewById(R.id.currentTextView)).setText(markerList.get(currentMarker).getUser());
     }
 
     public void pastMarker(View view) {
@@ -151,7 +147,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             currentMarker --;
         }
         LatLng toFocusMarker = markerList.get(currentMarker).getMarker();
-        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+        ((TextView)findViewById(R.id.currentTextView)).setText(markerList.get(currentMarker).getUser());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(toFocusMarker));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(toFocusMarker, zoom ));
 
@@ -164,7 +160,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             currentMarker++;
         }
         LatLng toFocusMarker = markerList.get(currentMarker).getMarker();
-        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+        ((TextView)findViewById(R.id.currentTextView)).setText(markerList.get(currentMarker).getUser());
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(toFocusMarker));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(toFocusMarker, zoom ));

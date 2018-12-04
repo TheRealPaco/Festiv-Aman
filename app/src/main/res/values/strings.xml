@@ -34,5 +34,6 @@
     <string name="my_groups">Mes groupes</string>
     <string name="new_group">Nouveau groupe</string>
     <string name="groupName">Nom du groupe</string>
+    <string name="title_activity_events">Map</string>
 
 </resources>

@@ -31,5 +31,8 @@
     <string name="bracelet">bracelet</string>
     <string name="title_activity_maps">Map</string>
     <string name="forgottenPassword">Mot de passe oublié?</string>
+    <string name="my_groups">Mes groupes</string>
+    <string name="new_group">Nouveau groupe</string>
+    <string name="groupName">Nom du groupe</string>
 
 </resources>

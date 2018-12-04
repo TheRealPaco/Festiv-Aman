@@ -24,7 +24,7 @@ public class ForgottenPasseword extends AppCompatActivity {
         // Prebuild dialog to display possible future error
         passewordDialog= new AlertDialog.Builder(this)
                 .setTitle("Mot de passe oublié")
-                .setMessage("Un Email va vous être evoyé avec votre nouveau mot de passe")
+                .setMessage("Un Email va vous être envoyé avec votre nouveau mot de passe")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();

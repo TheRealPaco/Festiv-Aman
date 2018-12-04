@@ -107,7 +107,6 @@
                     android:layout_marginTop="76dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/ic_search_black_24dp"
-                    android:onClick="getText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/textView_search"

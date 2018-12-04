@@ -1,6 +1,7 @@
 package com.s5.festivaman.Socket;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -13,6 +14,7 @@ public class ClientThread extends Thread {
 
     private Semaphore semaphore;
     private boolean isDataRetrieved = false;
+    private boolean connectionFailed = false;
 
     private List<String> message;
     private List<String> response;
@@ -24,6 +26,9 @@ public class ClientThread extends Thread {
 
     public List<String> getMessage() throws InterruptedException {
         semaphore.acquire();
+        if(connectionFailed) {
+            return null;
+        }
         isDataRetrieved = true;
         return response;
     }
@@ -31,7 +36,9 @@ public class ClientThread extends Thread {
     public void run() {
         try {
 
-            socket = new Socket(ADDRESS, PORT);
+            socket = new Socket();
+            socket.connect(new InetSocketAddress(ADDRESS, PORT), 2000);
+
             new Sender(socket, message).send();
             response = new Receiver(socket).listen();
 
@@ -43,12 +50,11 @@ public class ClientThread extends Thread {
                 if (isDataRetrieved)
                     break;
             }
-        } catch (IOException e) {
-            DatabaseQueries.setIsDatabaseMocked(true);
+        } catch (Exception e) {
+            DatabaseQueries.mockDatabase();
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            DatabaseQueries.setIsDatabaseMocked(true);
-            e.printStackTrace();
+            connectionFailed = true;
+            semaphore.release();
         }
 
     }

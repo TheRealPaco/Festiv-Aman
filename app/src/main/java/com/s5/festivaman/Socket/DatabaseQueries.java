@@ -7,8 +7,8 @@ public class DatabaseQueries {
 
     private static boolean isDatabaseMocked = false;
 
-    public static void  setIsDatabaseMocked(boolean isDatabaseMocked) {
-        DatabaseQueries.isDatabaseMocked = isDatabaseMocked;
+    public static void mockDatabase() {
+        DatabaseQueries.isDatabaseMocked = true;
     }
 
     ClientThread clientThread;
@@ -106,6 +106,17 @@ public class DatabaseQueries {
         return booleanQuery();
     }
 
+    public boolean modifAccount(String field, String data) {
+        if (isDatabaseMocked) {
+            return true;
+        }
+        query.add("modifAccount");
+        query.add(field);
+        query.add(data);
+
+        return booleanQuery();
+    }
+
     public List<String> getFriendsList(String user) {
         if (isDatabaseMocked) {
             List<String> returnList = new ArrayList<String>();
@@ -118,5 +129,18 @@ public class DatabaseQueries {
         return listQuery();
     }
 
+    public List<String> getFriendPosition(String user) {
+        if (isDatabaseMocked) {
+            List<String> returnList = new ArrayList<String>();
+            returnList.add("Paco;45.3781;-71.9261");
+            returnList.add("Louise;45.3781;-71.9271");
+            returnList.add("Chapeau;45.3781;-71.9281");
+            return returnList;
+        }
+        query.add("friendPos");
+        query.add(user);
+
+        return listQuery();
+    }
 
 }

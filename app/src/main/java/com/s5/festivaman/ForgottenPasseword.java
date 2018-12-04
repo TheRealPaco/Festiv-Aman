@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.s5.festivaman.Socket.DatabaseQueries;
+
 public class ForgottenPasseword extends AppCompatActivity {
 
     String email;
@@ -21,6 +23,7 @@ public class ForgottenPasseword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotten_passeword);
+
         // Prebuild dialog to display possible future error
         passewordDialog= new AlertDialog.Builder(this)
                 .setTitle("Mot de passe oublié")
@@ -76,10 +79,8 @@ public class ForgottenPasseword extends AppCompatActivity {
     }
 
     private boolean isUsernameAvailable() {
-        //TODO check in DB if user is used
-
-        if (false) {
-            newUserErrorDialog.setMessage("Username not available")
+        if (new DatabaseQueries().isUserNameAvailable(username)) {
+            newUserErrorDialog.setMessage("Le nom d'utilisateur n'existe pas")
                     .show();
             return false;
         }
@@ -92,7 +93,7 @@ public class ForgottenPasseword extends AppCompatActivity {
         try {
             if (isUserInfoValid()) {
                 // Start Activity
-                passewordDialog.setMessage("Un Email va vous être evoyé avec votre nouveau mot de passe").show();
+                passewordDialog.setMessage("Un Email va vous être envoyé avec votre nouveau mot de passe").show();
                 //Close the login activity because it's not needed anymore
             }
         } catch (Exception e) {

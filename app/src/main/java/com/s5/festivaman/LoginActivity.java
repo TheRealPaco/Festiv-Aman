@@ -46,11 +46,24 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view)
     {
+
+        // to remove
+        User.logIn("Paco");
+        Intent intent2 = new Intent(this, HomeActivity.class);
+        startActivity(intent2);
+
+        //Close the login activity because it's not needed anymore
+        finish();
+        if(true)
+        return;
+
+
+
         //set progress circle visible till connection is successful or fails
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
         user = ((EditText)findViewById(R.id.editTextUserNameLogin)).getText().toString();
-        password = ((EditText)findViewById(R.id.editTextPasswordLogin)).getText().toString();
+        password = ((EditText)findViewById(R.id.adresseMail)).getText().toString();
 
         try {
             if (user.isEmpty() || password.isEmpty()) {
@@ -89,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkUserPassword() {
+//        return true;
         return new DatabaseQueries().isPasswordCorrect(user,password);
     }
 
@@ -97,5 +111,4 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ForgottenPasseword.class);
         startActivity(intent);
     }
-
 }

@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.s5.festivaman.R;
+import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.activities.DrawerActivity;
 
 public class password extends DrawerActivity {
@@ -23,9 +24,8 @@ public class password extends DrawerActivity {
     }
 
     protected boolean send_password() {
-        //TODO send the modification of the username to the database
-        return true;
-
+        String data = ((EditText)findViewById(R.id.modification)).getText().toString();
+        return new DatabaseQueries().modifAccount("password",data);
     }
 
 }

@@ -1,14 +1,19 @@
 package com.s5.festivaman;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.activities.DrawerActivity;
+import com.s5.festivaman.user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,38 +40,13 @@ public class FriendsActivity extends DrawerActivity {
 
     }
 
-    protected boolean removeFriend(){
 
-        //TODO call the backend
-        return true;
-    }
 
     protected int createFriendPage () {
 
         LinearLayout linearLayout_factor = findViewById(R.id.friend_layout);
 
-        int n=10;
-        //TODO chercher dans la database le nombre d'amis (n)
-        List<String> friendsName=new ArrayList<>();
-
-
-        friendsName.add("Paco Picard");
-        friendsName.add("Louise Piecuch");
-
-        for(int i=0; i<n; i++)
-        {
-
-             friendsName.add("Paco Picard");
-             friendsName.add("Ricardo joan Nevado Paiva");
-             friendsName.add("Louise Piecuch");
-
-
-            //TODO chercher le nom de l'amis pour le mettre dans le textView
-
-            //TODO supprimer l'ami de la database lors de l'appui sur ce bouton
-        }
-
-
+        List<String> friendsName = new DatabaseQueries().getFriendsList(User.getUserName());
 
         for( int i = 0; i < friendsName.size(); i++ )
         {
@@ -93,25 +73,48 @@ public class FriendsActivity extends DrawerActivity {
             button.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
-                   buttonRemoveFriend(v);
+                    buttonRemoveFriend(v);
 
                 }
             });
 
         }
 
-        return n;
+        return friendsName.size();
     }
 
+    private TextView friendNameToRemove = null;
+    private View clickRemoved = null;
+
     public void buttonRemoveFriend (View view){
+        clickRemoved  = view;
+        friendNameToRemove = (map.get(view.getId()));
+        new AlertDialog.Builder(this)
+                .setTitle("Suppression")
+                .setMessage("Voulez-vous supprimer " + friendNameToRemove.getText().toString())
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (removeFriend(friendNameToRemove.getText().toString()))
+                        {
+                            friendNameToRemove.setVisibility(clickRemoved.GONE);
+                            clickRemoved.setVisibility(clickRemoved.GONE);
+                        }
+                    }
+                }).setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+        }).show();
 
-        TextView textView = (map.get(view.getId()));
-        if (removeFriend())
-        {
-           textView.setVisibility(view.GONE);
-           view.setVisibility(view.GONE);
+
+    }
+
+    protected boolean removeFriend(String friend){
+
+        if (new DatabaseQueries().removeFriends(User.getUserName(),friend)) {
+            return true;
         }
-
+        return false;
     }
     public void changePage (View view){
         Intent intent = new Intent(this, add_friend.class);

@@ -2,8 +2,12 @@ package com.s5.festivaman;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.s5.festivaman.Socket.DatabaseQueries;
 
 public class BirthDate extends AppCompatActivity {
   CalendarView calendarView;
@@ -24,5 +28,10 @@ public class BirthDate extends AppCompatActivity {
                 myDate.setText(date);
             }
         });
+    }
+
+    public boolean send_birthdate() {
+        String data = ((EditText)findViewById(R.id.modification)).getText().toString();
+        return new DatabaseQueries().modifAccount("birthday",data);
     }
 }

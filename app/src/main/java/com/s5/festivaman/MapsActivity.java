@@ -1,25 +1,39 @@
 package com.s5.festivaman;
 
-        import android.content.Intent;
-        import android.support.design.widget.NavigationView;
-        import android.support.v4.app.FragmentActivity;
-        import android.os.Bundle;
-        import android.support.v4.view.GravityCompat;
-        import android.support.v4.widget.DrawerLayout;
-        import android.view.MenuItem;
+import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-        import com.google.android.gms.maps.CameraUpdateFactory;
-        import com.google.android.gms.maps.GoogleMap;
-        import com.google.android.gms.maps.OnMapReadyCallback;
-        import com.google.android.gms.maps.SupportMapFragment;
-        import com.google.android.gms.maps.model.LatLng;
-        import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.s5.festivaman.Socket.DatabaseQueries;
+import com.s5.festivaman.user.User;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     protected DrawerLayout mDrawerLayout;
     protected NavigationView navigationView;
+
+    protected List<userMarker> markerList;
+    protected int currentMarker = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        markerList = new ArrayList<>();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -69,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             }
                             case R.id.nav_logout: {
-                                //TODO logout user
+                                User.logOut();
                                 startIntent(LoginActivity.class, true);
                                 finish();
                                 break;
@@ -100,17 +116,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    protected int zoom = 15;
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sherbrooke and move the camera
-        LatLng sherbrooke = new LatLng(45.3781, -71.9261);
-        mMap.addMarker(new MarkerOptions().position(sherbrooke).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sherbrooke));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sherbrooke, 16 ));
+        List<String> list = new DatabaseQueries().getFriendPosition(User.getUserName());
+
+        LatLng marker = null;
+        if (list != null) {
+            for (String pos: list) {
+                String[] userPos = pos.split(";");
+                marker = new LatLng(Float.parseFloat(userPos[1]),Float.parseFloat(userPos[2]));
+                mMap.addMarker(new MarkerOptions().position(marker).title(userPos[0]));
+                markerList.add(new userMarker(userPos[0], marker));
+            }
+        }  else {
+            //Set a default marker to udes engineer faculty
+            marker = new LatLng(45.3781, -71.9261);
+            mMap.addMarker(new MarkerOptions().position(marker));
+            markerList.add(new userMarker("Default", marker));
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, zoom ));
+        currentMarker = markerList.size()-1;
+        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+    }
+
+    public void pastMarker(View view) {
+        if (currentMarker <= 0) {
+            currentMarker = markerList.size() -1;
+        } else {
+            currentMarker --;
+        }
+        LatLng toFocusMarker = markerList.get(currentMarker).getMarker();
+        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(toFocusMarker));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(toFocusMarker, zoom ));
 
     }
+
+    public void nextMarker(View view) {
+        if (currentMarker >= markerList.size()-1) {
+            currentMarker = 0;
+        } else {
+            currentMarker++;
+        }
+        LatLng toFocusMarker = markerList.get(currentMarker).getMarker();
+        ((TextView)findViewById(R.id.currentPositionTextView)).setText(markerList.get(currentMarker).getUser());
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(toFocusMarker));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(toFocusMarker, zoom ));
+
+    }
+
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -119,6 +179,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             startIntent(HomeActivity.class, true );
             //super.onBackPressed();
         }
+    }
+
+    private class userMarker {
+
+        private String user;
+        private LatLng marker;
+
+        public userMarker(String user, LatLng marker) {
+            this.marker = marker;
+            this.user = user;
+        }
+
+        public LatLng getMarker() {
+            return marker;
+        }
+
+        public String getUser() {
+            return user;
+        }
+
     }
 }
 

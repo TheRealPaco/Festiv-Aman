@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.s5.festivaman.Socket.DatabaseQueries;
+
 public class NewUserActivity extends AppCompatActivity {
 
     String password;
@@ -35,12 +37,22 @@ public class NewUserActivity extends AppCompatActivity {
 
     public void newUser(View view)
     {
-        if (isUserInfoValid()) {
+        if (isUserInfoValid() && createNewUser()) {
+
             Intent intent = new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }
+    }
+
+    private boolean createNewUser() {
+        boolean successful = new DatabaseQueries().createNewUser(username,password,email);
+        if (!successful) {
+            newUserErrorDialog.setMessage("Creation failed")
+                    .show();
+        }
+        return successful;
     }
 
     private boolean isUserInfoValid() {
@@ -87,9 +99,7 @@ public class NewUserActivity extends AppCompatActivity {
     }
 
     private boolean isUsernameAvailable() {
-        //TODO check in DB if user is used
-
-        if (false) {
+        if (!new DatabaseQueries().isUserNameAvailable(username)) {
             newUserErrorDialog.setMessage("Username not available")
                     .show();
             return false;

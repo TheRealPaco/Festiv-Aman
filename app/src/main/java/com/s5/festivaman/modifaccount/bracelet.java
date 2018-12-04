@@ -4,6 +4,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.s5.festivaman.R;
+import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.activities.DrawerActivity;
 
 public class bracelet extends DrawerActivity {
@@ -19,8 +20,7 @@ public class bracelet extends DrawerActivity {
 
     protected boolean send_userName()
     {
-        //TODO send the modification of the bracelet number to the database
-        return true;
-
+        String data = ((EditText)findViewById(R.id.modification)).getText().toString();
+        return new DatabaseQueries().modifAccount("bracelet",data);
     }
 }

@@ -17,6 +17,7 @@ import com.s5.festivaman.LoginActivity;
 import com.s5.festivaman.MapsActivity;
 import com.s5.festivaman.MeetingsActivity;
 import com.s5.festivaman.R;
+import com.s5.festivaman.user.User;
 
 public class DrawerActivity extends AppCompatActivity {
 
@@ -70,7 +71,7 @@ public class DrawerActivity extends AppCompatActivity {
                                 break;
                             }
                             case R.id.nav_logout: {
-                                //TODO logout user
+                                User.logOut();
                                 startIntent(LoginActivity.class, true);
                                 finish();
                                 break;

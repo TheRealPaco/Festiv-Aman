@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.activities.DrawerActivity;
 import com.s5.festivaman.user.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -37,6 +37,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
@@ -112,6 +113,25 @@
                             android:background="?android:attr/listDivider"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/initGroupName"
+                            android:layout_width="248dp"
+                            android:layout_height="56dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/divider16" />
+
+                        <View
+                            android:id="@+id/divider17"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="130dp"
+                            android:background="?android:attr/listDivider"
                             app:layout_constraintTop_toTopOf="parent" />
                     </android.support.constraint.ConstraintLayout>
 

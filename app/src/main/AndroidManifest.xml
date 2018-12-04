@@ -59,7 +59,8 @@
         <activity android:name=".NewGroup" />
         <activity
             android:name=".EventsActivity"
-            android:label="@string/title_activity_events"></activity>
+            android:label="@string/title_activity_events" />
+        <activity android:name=".NewMeetingPoint"></activity>
     </application>
 
 </manifest>

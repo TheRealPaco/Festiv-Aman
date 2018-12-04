@@ -35,5 +35,7 @@
     <string name="new_group">Nouveau groupe</string>
     <string name="groupName">Nom du groupe</string>
     <string name="title_activity_events">Map</string>
+    <string name="new_meeting_points">Nouveaux points de rencontre</string>
+    <string name="meetingpoint_name">Nom du point de rencontre</string>
 
 </resources>

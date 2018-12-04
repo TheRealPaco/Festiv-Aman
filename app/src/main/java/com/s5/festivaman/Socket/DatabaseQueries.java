@@ -106,6 +106,8 @@ public class DatabaseQueries {
         return booleanQuery();
     }
 
+
+
     public boolean modifAccount(String field, String data) {
         if (isDatabaseMocked) {
             return true;
@@ -128,6 +130,17 @@ public class DatabaseQueries {
 
         return listQuery();
     }
+
+    public List<String> getMeetingList() {
+        if (isDatabaseMocked) {
+            List<String> returnList = new ArrayList<String>();
+            returnList.add("MeetingPoints");
+            return returnList;
+        }
+        query.add("MeetingPoints");
+        return listQuery();
+    }
+
 
     public List<String> getFriendPosition(String user) {
         if (isDatabaseMocked) {

@@ -118,7 +118,7 @@ public class EventsActivity extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        List<String> list = new DatabaseQueries().getFriendPosition(User.getUserName());
+        List<String> list = new DatabaseQueries().getEventsPosition();
 
         LatLng marker = null;
         if (list != null) {

@@ -10,7 +10,7 @@ public class ClientThread extends Thread {
 
     private Socket socket;
     private static final int PORT = 9090;
-    private static final String ADDRESS = "192.168.137.1";
+    private static final String ADDRESS = "192.168.0.102";
 
     private Semaphore semaphore;
     private boolean isDataRetrieved = false;

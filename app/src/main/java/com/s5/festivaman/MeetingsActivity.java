@@ -109,8 +109,6 @@ public class MeetingsActivity extends DrawerActivity {
                 // do nothing
             }
         }).show();
-
-
     }
 
     protected boolean removeFriend(String friend){

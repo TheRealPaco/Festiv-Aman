@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.user.User;
@@ -46,19 +47,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view)
     {
-
-        // to remove
-        User.logIn("Paco");
-        Intent intent2 = new Intent(this, HomeActivity.class);
-        startActivity(intent2);
-
-        //Close the login activity because it's not needed anymore
-        finish();
-        if(true)
-        return;
-
-
-
         //set progress circle visible till connection is successful or fails
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
@@ -76,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             if (checkUserPassword()) {
                 // Start Activity
                 User.logIn(user);
+
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
 

@@ -1,6 +1,8 @@
 package com.s5.festivaman;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 
@@ -24,8 +26,15 @@ public class AccountInfoActivity extends DrawerActivity {
 
     public void onClic_userName(View view) {
 
-        Intent intent = new Intent(this, user_name.class);
-        startActivity(intent);
+        new AlertDialog.Builder(this)
+                .setTitle("Modification du nom d'utilisateur")
+                .setMessage("Désoler la fonctionnalité n'est pas encore implémentée")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                }).show();
+//        Intent intent = new Intent(this, user_name.class);
+//        startActivity(intent);
 
     }
 

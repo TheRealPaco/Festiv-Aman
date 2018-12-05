@@ -90,7 +90,7 @@ android:layout_height="match_parent">
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
                             android:textSize="24sp"
-                            app:layout_constraintBottom_toTopOf="@+id/button2"
+                            app:layout_constraintBottom_toTopOf="@+id/buttonModif"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.501"
                             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@ android:layout_height="match_parent">
 
 
                         <Button
-                            android:id="@+id/button2"
+                            android:id="@+id/buttonModif"
                             android:layout_width="51dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="242dp"

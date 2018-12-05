@@ -1,5 +1,7 @@
 package com.s5.festivaman.Socket;
 
+import com.s5.festivaman.user.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class DatabaseQueries {
     private static boolean isDatabaseMocked = false;
 
     public static void mockDatabase() {
-        DatabaseQueries.isDatabaseMocked = true;
+        DatabaseQueries.isDatabaseMocked = false;
     }
 
     ClientThread clientThread;
@@ -113,6 +115,7 @@ public class DatabaseQueries {
             return true;
         }
         query.add("modifAccount");
+        query.add(User.getUserName());
         query.add(field);
         query.add(data);
 
@@ -134,13 +137,14 @@ public class DatabaseQueries {
     public List<String> getMeetingList() {
         if (isDatabaseMocked) {
             List<String> returnList = new ArrayList<String>();
-            returnList.add("MeetingPoints");
+            returnList.add("Les vielles Charues;48.270482;-3.551300");
+            returnList.add("HellFest;47.097252;-1.271214");
+            returnList.add("FEQ;46.802410;-71.216937");
             return returnList;
         }
         query.add("MeetingPoints");
         return listQuery();
     }
-
 
     public List<String> getFriendPosition(String user) {
         if (isDatabaseMocked) {
@@ -152,6 +156,20 @@ public class DatabaseQueries {
         }
         query.add("friendPos");
         query.add(user);
+
+        return listQuery();
+    }
+
+
+    public List<String> getEventsPosition() {
+        if (isDatabaseMocked) {
+            List<String> tempList = new ArrayList<String>();
+            tempList.add("Les vielles Charues;48.270482;-3.551300");
+            tempList.add("HellFest;47.097252;-1.271214");
+            tempList.add("FEQ;46.802410;-71.216937");
+            return tempList;
+        }
+        query.add("eventsPos");
 
         return listQuery();
     }

@@ -10,7 +10,6 @@ import com.s5.festivaman.activities.DrawerActivity;
 import com.s5.festivaman.modifaccount.bracelet;
 import com.s5.festivaman.modifaccount.email;
 import com.s5.festivaman.modifaccount.password;
-import com.s5.festivaman.modifaccount.user_name;
 
 public class AccountInfoActivity extends DrawerActivity {
 

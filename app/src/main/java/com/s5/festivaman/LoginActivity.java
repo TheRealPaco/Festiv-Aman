@@ -3,17 +3,14 @@ package com.s5.festivaman;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.s5.festivaman.Socket.DatabaseQueries;
 import com.s5.festivaman.user.User;
-
-import com.s5.festivaman.modifaccount.bracelet;
 
 public class LoginActivity extends AppCompatActivity {
 

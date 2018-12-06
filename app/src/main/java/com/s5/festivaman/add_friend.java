@@ -43,6 +43,7 @@ public class add_friend extends DrawerActivity {
                 .setMessage("Ami ajouté")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        onBackPressed();
                     }
                 });
     }
@@ -107,7 +108,9 @@ public class add_friend extends DrawerActivity {
 
 
     protected boolean add_friend(String friend){
+
         return new DatabaseQueries().addFriends(User.getUserName(),friend);
+
     }
 
     public void buttonAddFriend (View view) {
@@ -116,6 +119,7 @@ public class add_friend extends DrawerActivity {
         if (add_friend(textView.getText().toString())) {
             friendAddedDialog.setMessage("Votre ami(e) "+ textView.getText() + " a bien été ajouté(e) à votre liste")
                     .show();
+
         }
     }
 }

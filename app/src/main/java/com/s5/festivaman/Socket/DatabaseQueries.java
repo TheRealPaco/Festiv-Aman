@@ -6,7 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseQueries {
-    List<String> returnList;
+    private static List<String> returnList = new ArrayList<>();
+    static {
+        returnList.add("Louise");
+        returnList.add("Paco");
+        returnList.add("Coco");
+        returnList.add("JP");
+        returnList.add("Ricardo");
+        returnList.add("Julien");
+        returnList.add("Marc-Antoine");
+        returnList.add("Maëlle");
+        returnList.add("Léo");
+        returnList.add("Pierre");
+    }
+
     // Used to mock DB when database not available
     private static boolean isDatabaseMocked = true;
 
@@ -20,7 +33,6 @@ public class DatabaseQueries {
 
 
     public DatabaseQueries() {
-        returnList = new ArrayList<String>();
         query = new ArrayList<>();
     }
 
@@ -90,7 +102,7 @@ public class DatabaseQueries {
 
     public boolean removeFriends(String user, String friend) {
         if (isDatabaseMocked) {
-            returnList.remove(user);
+            returnList.remove(friend);
             return true;
         }
         query.add("removeFriend");
@@ -102,7 +114,7 @@ public class DatabaseQueries {
 
     public boolean addFriends(String user, String friend) {
         if (isDatabaseMocked) {
-            returnList.add(user);
+            returnList.add(friend);
             return true;
         }
         query.add("addFriend");
@@ -129,16 +141,6 @@ public class DatabaseQueries {
     public List<String> getFriendsList(String user) {
         if (isDatabaseMocked) {
 
-            returnList.add("Louise");
-            returnList.add("Paco");
-            returnList.add("Coco");
-            returnList.add("JP");
-            returnList.add("Ricardo");
-            returnList.add("Julien");
-            returnList.add("Marc-Antoine");
-            returnList.add("Maëlle");
-            returnList.add("Léo");
-            returnList.add("Pierre");
             return returnList;
         }
         query.add("friendList");
@@ -150,9 +152,9 @@ public class DatabaseQueries {
     public List<String> getMeetingList() {
         if (isDatabaseMocked) {
             List<String> returnList = new ArrayList<String>();
-            returnList.add("Les vieilles Charrues;48.270482;-3.551300");
-            returnList.add("HellFest;47.097252;-1.271214");
-            returnList.add("Festival d'été de Québec;46.802410;-71.216937");
+            returnList.add("Les vieilles Charrues");
+            returnList.add("HellFest");
+            returnList.add("Festival d'été de Québec");
             return returnList;
         }
         query.add("MeetingPoints");
